@@ -7,9 +7,8 @@ from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import pickle
-from nltk.data import find  # ✅ Add this import
+from nltk.data import find
 
-# ✅ Ensure NLTK data is available (important for deployment)
 try:
     find('tokenizers/punkt')
 except LookupError:
@@ -60,7 +59,7 @@ model.fit(X, y)
 pickle.dump(model, open('model.pkl', 'wb'))
 pickle.dump(cv, open('vectorizer.pkl', 'wb'))
 
-print("✅ Model and vectorizer saved successfully!")
+print("Model and vectorizer saved successfully!")
 
 # Streamlit UI
 tfidf = pickle.load(open('vectorizer.pkl','rb'))
